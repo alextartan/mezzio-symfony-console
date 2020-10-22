@@ -28,7 +28,7 @@
     }
   },
   "require-dev": {
-    "infection/infection": "^0.16.0",
+    "infection/infection": "^0.16.0 || ^0.18.0",
     "phpunit/phpunit": "^9.0.0",
     "php-coveralls/php-coveralls": "2.2.*",
     "phpstan/phpstan": "0.12.*",
