@@ -32,6 +32,7 @@
     "phpunit/phpunit": "^9.0.0",
     "php-coveralls/php-coveralls": "2.4.*",
     "phpstan/phpstan": "0.12.*",
+    "phpspec/prophecy": "1.*",
     "phpstan/phpstan-strict-rules": "^0.12.1",
     "phpstan/phpstan-phpunit": "^0.12.6",
     "jangregor/phpstan-prophecy": "0.8.*",

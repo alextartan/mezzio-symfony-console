@@ -7,6 +7,7 @@ namespace AlexTartanTest\Mezzio\SymfonyConsole;
 use AlexTartan\Mezzio\SymfonyConsole\ApplicationFactory;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
+use Prophecy\Prophet;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console as SymfonyConsole;
 
@@ -15,12 +16,24 @@ use Symfony\Component\Console as SymfonyConsole;
  */
 class ApplicationFactoryTest extends TestCase
 {
+    private Prophet $prophet;
+
+    protected function setUp(): void
+    {
+        $this->prophet = new Prophet();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->prophet->checkPredictions();
+    }
+
     public function testFactory01(): void
     {
         $config = [];
 
         /** @var ContainerInterface|ObjectProphecy $container */
-        $container = $this->prophesize(ContainerInterface::class);
+        $container = $this->prophet->prophesize(ContainerInterface::class);
         $container->get('config')->willReturn($config);
 
         $applicationFactory = new ApplicationFactory();
@@ -45,7 +58,7 @@ class ApplicationFactoryTest extends TestCase
         $dummyCommand = new SymfonyConsole\Command\Command('dummy-command');
 
         /** @var ContainerInterface|ObjectProphecy $container */
-        $container = $this->prophesize(ContainerInterface::class);
+        $container = $this->prophet->prophesize(ContainerInterface::class);
         $container->get('config')->willReturn($config);
         $container->get('dummy-command')->willReturn($dummyCommand);
         $container->has('dummy-command')->willReturn(true);
@@ -73,7 +86,7 @@ class ApplicationFactoryTest extends TestCase
         $dummyCommand = new SymfonyConsole\Command\Command('command-name');
 
         /** @var ContainerInterface|ObjectProphecy $container */
-        $container = $this->prophesize(ContainerInterface::class);
+        $container = $this->prophet->prophesize(ContainerInterface::class);
         $container->get('config')->willReturn($config);
         $container->has('dummy-command')->willReturn(true);
         $container->get('dummy-command')->willReturn($dummyCommand);
