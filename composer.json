@@ -30,7 +30,7 @@
   "require-dev": {
     "infection/infection": "^0.16.0",
     "phpunit/phpunit": "^9.0.0",
-    "php-coveralls/php-coveralls": "2.2.* || 2.4.*",
+    "php-coveralls/php-coveralls": "2.4.*",
     "phpstan/phpstan": "0.12.*",
     "phpstan/phpstan-strict-rules": "^0.12.1",
     "phpstan/phpstan-phpunit": "^0.12.6",
